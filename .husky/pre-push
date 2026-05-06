@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+cd "$(dirname "$0")/.."
+
+echo "🔍 Running ESLint..."
+npm run lint || {
+  echo ""
+  echo "❌ ESLint failed. Fix errors before pushing."
+  echo "👉 Run: npm run lint"
+  exit 1
+}
+
+echo "🎨 Running Prettier..."
+npm run prettier || {
+  echo ""
+  echo "❌ Prettier check failed. Fix formatting before pushing."
+  echo "👉 Run: npm run prettier"
+  exit 1
+}
+
+echo ""
+echo "✅ All checks passed. Push allowed."
